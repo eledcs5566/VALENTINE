@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You ❤️</title>
+<title>For Riya 💜</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -45,6 +45,7 @@ button:hover { transform: scale(1.05); }
   border-radius: 20px;
   margin: 25px auto;
   max-width: 700px;
+  position: relative;
 }
 
 .chat {
@@ -68,6 +69,18 @@ button:hover { transform: scale(1.05); }
   margin-top: 10px;
 }
 
+.lyric {
+  font-style: italic;
+  font-size: 1.3em;
+  margin-top: 15px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 .heart {
   position: fixed;
   top: -10px;
@@ -84,15 +97,15 @@ button:hover { transform: scale(1.05); }
 
 <!-- INTRO -->
 <div id="intro" class="screen">
-  <h1>Hey you 💜</h1>
-  <p>I made something just for you.</p>
+  <h1>Hey Riya 💜</h1>
+  <p>I made something just for you, Pikachuuu 🥹</p>
   <button onclick="start()">Tap to start 💖</button>
 </div>
 
 <!-- MAIN -->
 <div id="main" class="hidden">
 
-  <!-- MUSIC: starts at lyrics -->
+  <!-- MUSIC -->
   <iframe width="0" height="0"
     src="https://www.youtube.com/embed/2Vv-BfVoq4g?start=49&autoplay=1&loop=1&playlist=2Vv-BfVoq4g"
     frameborder="0" allow="autoplay">
@@ -105,17 +118,17 @@ button:hover { transform: scale(1.05); }
 
   <!-- COUNTDOWN -->
   <div class="card">
-    <h3>Until we meet in July 💜</h3>
+    <h3>Until I finally see you in July 💜</h3>
     <div id="timer" class="countdown"></div>
   </div>
 
   <!-- CHAT -->
   <div id="chat" class="card chat hidden">
-    <div class="msg">Hey…</div>
-    <div class="msg me">Yeah?</div>
-    <div class="msg">I can’t wait to see you.</div>
-    <div class="msg me">July feels so close now 🥺</div>
-    <div class="msg">It’ll be worth the wait.</div>
+    <div class="msg">Hey Pikachuuu…</div>
+    <div class="msg me">Hmm?</div>
+    <div class="msg">Do you know how special you are to me?</div>
+    <div class="msg me">Tell me.</div>
+    <div class="msg">You feel like home.</div>
   </div>
 
   <!-- INTERACTION -->
@@ -126,23 +139,27 @@ button:hover { transform: scale(1.05); }
 
   <!-- QUESTION -->
   <div id="question" class="card hidden">
-    <h2>Will you be my Valentine? 💘</h2>
+    <h2>Riya, will you be my Valentine? 💘</h2>
     <button onclick="yes()">YES 😍</button>
-    <button onclick="yes()">Obviously 🙄❤️</button>
+    <button id="noBtn">No 🙃</button>
   </div>
 
   <!-- END -->
   <div id="end" class="card hidden">
     <h2>You chose me 💖</h2>
     <p>Now all that’s left is July… and you in my arms.</p>
+    <div class="lyric">
+      “You’re my today, my tomorrow.” 💜<br>
+      — BTS ✨
+    </div>
   </div>
 
 </div>
 
 <script>
-/* TYPEWRITER LETTER */
+/* TYPEWRITER */
 let text =
-"Somewhere between the waiting and the hoping, you became my favorite thought. You feel like comfort, like home, like something I want to protect. This is my way of saying — I’m looking forward to every moment with you, especially the one where I finally see you in July. 💜";
+"Riya, somewhere between waiting and hoping, you became my favorite thought. You feel like comfort, like home, like something I want to protect. This is my simple way of saying — I’m counting down every day until July, when I finally get to see you, Pikachuuu. 💜";
 let i = 0;
 
 function start(){
@@ -162,7 +179,7 @@ function type(){
   }
 }
 
-/* COUNTDOWN TO JULY 1 */
+/* COUNTDOWN */
 const targetDate = new Date("July 1, 2026 00:00:00").getTime();
 setInterval(()=>{
   const now = new Date().getTime();
@@ -180,6 +197,17 @@ function next(){
 function yes(){
   document.getElementById("end").classList.remove("hidden");
 }
+
+/* RUNAWAY NO BUTTON */
+const noBtn = document.getElementById("noBtn");
+function moveButton(){
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 150 - 75;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
 
 /* HEARTS */
 for(let h=0; h<35; h++){
