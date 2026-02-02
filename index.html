@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+.container {
+  padding: 40px 20px;
+}
+h1 {
+  font-size: 2.5em;
+}
+button {
+  background: white;
+  color: #ff4d6d;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 10px;
+}
+.hidden {
+  display: none;
+}
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  from { transform: translateY(-10px); }
+  to { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Hey You ❤️</h1>
+  <p>This is something I made just for you.</p>
+
+  <button onclick="showMessage()">Click me 💌</button>
+  <p id="msg" class="hidden">
+    Even without pictures, I carry you in every thought, every smile, every quiet moment.
+  </p>
+
+  <button onclick="reveal()">One more thing 🌹</button>
+  <p id="final" class="hidden">
+    Will you be my Valentine? 💖
+  </p>
+</div>
+
+<script>
+function showMessage() {
+  document.getElementById("msg").classList.remove("hidden");
+}
+function reveal() {
+  document.getElementById("final").classList.remove("hidden");
+}
+for(let i=0;i<20;i++){
+  let h=document.createElement("div");
+  h.innerHTML="❤️";
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=3+Math.random()*5+"s";
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
