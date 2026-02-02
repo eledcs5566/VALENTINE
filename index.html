@@ -9,11 +9,12 @@
 body {
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
-  background: linear-gradient(135deg, #ff4d6d, #ff85a1);
+  background: linear-gradient(135deg, #6a0dad, #ff4d6d);
   color: white;
   text-align: center;
   overflow-x: hidden;
 }
+
 .screen {
   min-height: 100vh;
   display: flex;
@@ -22,6 +23,7 @@ body {
   flex-direction: column;
   padding: 30px;
 }
+
 .hidden { display: none; }
 
 button {
@@ -32,8 +34,10 @@ button {
   border-radius: 40px;
   font-size: 1em;
   cursor: pointer;
-  margin-top: 20px;
+  margin: 12px;
+  transition: transform 0.2s;
 }
+button:hover { transform: scale(1.05); }
 
 .card {
   background: rgba(255,255,255,0.15);
@@ -43,16 +47,25 @@ button {
   max-width: 700px;
 }
 
-img {
-  width: 100%;
-  border-radius: 20px;
-  margin: 20px 0;
-  animation: fadeZoom 2s ease;
+.chat {
+  text-align: left;
+}
+.msg {
+  background: white;
+  color: #6a0dad;
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin: 8px 0;
+  width: fit-content;
+}
+.msg.me {
+  margin-left: auto;
+  background: #ffd6e0;
 }
 
-@keyframes fadeZoom {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+.countdown {
+  font-size: 1.4em;
+  margin-top: 10px;
 }
 
 .heart {
@@ -61,7 +74,6 @@ img {
   font-size: 22px;
   animation: fall linear infinite;
 }
-
 @keyframes fall {
   to { transform: translateY(110vh); }
 }
@@ -70,60 +82,67 @@ img {
 
 <body>
 
-<!-- INTRO SCREEN -->
+<!-- INTRO -->
 <div id="intro" class="screen">
-  <h1>Hey you ❤️</h1>
-  <p>I made something special for you.</p>
+  <h1>Hey you 💜</h1>
+  <p>I made something just for you.</p>
   <button onclick="start()">Tap to start 💖</button>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div id="main" class="hidden">
 
-  <!-- Music (hidden YouTube autoplay) -->
-  <iframe id="music" width="0" height="0"
-    src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&mute=0&loop=1&playlist=2Vv-BfVoq4g"
+  <!-- MUSIC: starts at lyrics -->
+  <iframe width="0" height="0"
+    src="https://www.youtube.com/embed/2Vv-BfVoq4g?start=49&autoplay=1&loop=1&playlist=2Vv-BfVoq4g"
     frameborder="0" allow="autoplay">
   </iframe>
 
+  <!-- LETTER -->
   <div class="card">
     <p id="letter"></p>
   </div>
 
+  <!-- COUNTDOWN -->
   <div class="card">
-    <img src="images/img1.jpg">
-    <img src="images/img2.jpg">
-    <img src="images/img3.jpg">
-    <img src="images/img4.jpg">
+    <h3>Until we meet in July 💜</h3>
+    <div id="timer" class="countdown"></div>
   </div>
 
-  <div class="card">
-    <p>Some people slowly become important.</p>
-    <p>And then suddenly… they become everything 💗</p>
+  <!-- CHAT -->
+  <div id="chat" class="card chat hidden">
+    <div class="msg">Hey…</div>
+    <div class="msg me">Yeah?</div>
+    <div class="msg">I can’t wait to see you.</div>
+    <div class="msg me">July feels so close now 🥺</div>
+    <div class="msg">It’ll be worth the wait.</div>
   </div>
 
-  <div class="card">
-    <img src="images/img5.jpg">
-    <img src="images/img6.jpg">
-    <img src="images/img7.jpg">
-    <img src="images/img8.jpg">
+  <!-- INTERACTION -->
+  <div id="choice" class="card hidden">
+    <p>If you’re smiling right now…</p>
+    <button onclick="next()">Click this 😌</button>
   </div>
 
-  <div class="card">
+  <!-- QUESTION -->
+  <div id="question" class="card hidden">
     <h2>Will you be my Valentine? 💘</h2>
     <button onclick="yes()">YES 😍</button>
     <button onclick="yes()">Obviously 🙄❤️</button>
   </div>
 
+  <!-- END -->
   <div id="end" class="card hidden">
     <h2>You chose me 💖</h2>
-    <p>And I’d choose you in every universe.</p>
+    <p>Now all that’s left is July… and you in my arms.</p>
   </div>
 
 </div>
 
 <script>
-let text = "I don’t need pictures to know how special you are. But seeing you like this… makes my heart feel full. This is my way of saying — you matter to me more than you know. ❤️";
+/* TYPEWRITER LETTER */
+let text =
+"Somewhere between the waiting and the hoping, you became my favorite thought. You feel like comfort, like home, like something I want to protect. This is my way of saying — I’m looking forward to every moment with you, especially the one where I finally see you in July. 💜";
 let i = 0;
 
 function start(){
@@ -136,21 +155,39 @@ function type(){
   if(i < text.length){
     document.getElementById("letter").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 50);
+    setTimeout(type, 45);
+  } else {
+    setTimeout(()=>document.getElementById("chat").classList.remove("hidden"),800);
+    setTimeout(()=>document.getElementById("choice").classList.remove("hidden"),1600);
   }
 }
 
+/* COUNTDOWN TO JULY 1 */
+const targetDate = new Date("July 1, 2026 00:00:00").getTime();
+setInterval(()=>{
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  document.getElementById("timer").innerHTML =
+    days + " days " + hours + " hours 💫";
+},1000);
+
+/* FLOW */
+function next(){
+  document.getElementById("question").classList.remove("hidden");
+}
 function yes(){
   document.getElementById("end").classList.remove("hidden");
 }
 
-/* hearts */
-for(let h=0; h<30; h++){
+/* HEARTS */
+for(let h=0; h<35; h++){
   let heart=document.createElement("div");
-  heart.innerHTML="❤️";
+  heart.innerHTML="💜";
   heart.className="heart";
   heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=3+Math.random()*5+"s";
+  heart.style.animationDuration=3+Math.random()*6+"s";
   document.body.appendChild(heart);
 }
 </script>
