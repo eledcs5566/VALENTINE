@@ -4,38 +4,66 @@
 <meta charset="UTF-8">
 <title>For You ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(135deg, #ff4d6d, #ff85a1);
   color: white;
   text-align: center;
   overflow-x: hidden;
 }
 .container {
   padding: 40px 20px;
+  max-width: 700px;
+  margin: auto;
 }
 h1 {
-  font-size: 2.5em;
+  font-size: 2.6em;
 }
 button {
   background: white;
   color: #ff4d6d;
   border: none;
-  padding: 15px 25px;
-  border-radius: 30px;
+  padding: 14px 28px;
+  border-radius: 40px;
   font-size: 1em;
   cursor: pointer;
-  margin: 10px;
+  margin: 12px;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.05);
 }
 .hidden {
   display: none;
 }
+.card {
+  background: rgba(255,255,255,0.15);
+  padding: 25px;
+  border-radius: 20px;
+  margin-top: 25px;
+}
+.chat {
+  text-align: left;
+}
+.msg {
+  background: white;
+  color: #ff4d6d;
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin: 8px 0;
+  width: fit-content;
+}
+.msg.me {
+  margin-left: auto;
+  background: #ffd6e0;
+}
 .heart {
   position: fixed;
   top: -10px;
-  font-size: 20px;
+  font-size: 22px;
   animation: fall linear infinite;
 }
 @keyframes fall {
@@ -47,35 +75,83 @@ button {
 
 <body>
 <div class="container">
+
   <h1>Hey You ❤️</h1>
-  <p>This is something I made just for you.</p>
+  <p>I made this just for you.</p>
 
-  <button onclick="showMessage()">Click me 💌</button>
-  <p id="msg" class="hidden">
-    Even without pictures, I carry you in every thought, every smile, every quiet moment.
-  </p>
+  <button onclick="startLetter()">Start 💌</button>
 
-  <button onclick="reveal()">One more thing 🌹</button>
-  <p id="final" class="hidden">
-    Will you be my Valentine? 💖
-  </p>
+  <div id="letter" class="card hidden">
+    <p id="typeText"></p>
+  </div>
+
+  <div id="chatBox" class="card hidden chat">
+    <div class="msg">Hey…</div>
+    <div class="msg me">Yeah?</div>
+    <div class="msg">I just wanted you to know…</div>
+    <div class="msg me">Know what?</div>
+    <div class="msg">You mean a lot to me ❤️</div>
+  </div>
+
+  <div id="quiz" class="card hidden">
+    <p>Quick question 😌</p>
+    <p>Who’s my favorite person?</p>
+    <button onclick="quizCorrect()">You 💖</button>
+    <button onclick="quizCorrect()">Obviously me 🙄</button>
+  </div>
+
+  <div id="final" class="card hidden">
+    <h2>Will you be my Valentine? 💘</h2>
+    <button onclick="yes()">YES 😍</button>
+    <button onclick="yes()">Obviously 🙄❤️</button>
+  </div>
+
+  <div id="end" class="card hidden">
+    <h2>YAY 💖</h2>
+    <p>You just made my day… and honestly, my heart.</p>
+  </div>
+
 </div>
 
 <script>
-function showMessage() {
-  document.getElementById("msg").classList.remove("hidden");
+/* Typewriter */
+let text = "Even without pictures, I feel you in every thought, every smile, every quiet moment. This is my small way of saying… you matter to me. A lot. ❤️";
+let i = 0;
+function startLetter(){
+  document.getElementById("letter").classList.remove("hidden");
+  type();
 }
-function reveal() {
+function type(){
+  if(i < text.length){
+    document.getElementById("typeText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 50);
+  } else {
+    setTimeout(()=>document.getElementById("chatBox").classList.remove("hidden"),800);
+    setTimeout(()=>document.getElementById("quiz").classList.remove("hidden"),1600);
+  }
+}
+
+/* Quiz */
+function quizCorrect(){
   document.getElementById("final").classList.remove("hidden");
 }
-for(let i=0;i<20;i++){
-  let h=document.createElement("div");
-  h.innerHTML="❤️";
-  h.className="heart";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=3+Math.random()*5+"s";
-  document.body.appendChild(h);
+
+/* Final */
+function yes(){
+  document.getElementById("end").classList.remove("hidden");
+}
+
+/* Hearts */
+for(let h=0; h<25; h++){
+  let heart=document.createElement("div");
+  heart.innerHTML="❤️";
+  heart.className="heart";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=3+Math.random()*5+"s";
+  document.body.appendChild(heart);
 }
 </script>
+
 </body>
 </html>
