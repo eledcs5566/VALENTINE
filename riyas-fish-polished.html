@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#bcebe8">
+<title>RIYA'S FISH ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --ink:#285b66; --muted:#6b969a; --glass:#eaffff;
+  --sea:#7fc9cb; --deep:#347f89; --sand:#e8d8b8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:'DM Sans',sans-serif}
+body{
+  color:var(--ink); overflow-x:hidden;
+  background:
+    radial-gradient(ellipse at 15% 10%,#fff 0,transparent 35%),
+    linear-gradient(180deg,#e8fbf7 0%,#c8f0ec 48%,#a6dfe0 100%);
+}
+.scene{
+  min-height:100svh;position:relative;isolation:isolate;overflow:hidden;
+  display:grid;place-items:center;padding:30px 16px 54px;
+}
+.sunbeams{
+  position:absolute;inset:-15% -35% auto;height:75%;z-index:-1;opacity:.38;
+  background:repeating-conic-gradient(from 195deg at 50% 0%,transparent 0 8deg,#fff9 9deg 11deg,transparent 12deg 21deg);
+  filter:blur(22px);pointer-events:none;
+}
+.water-glow{
+  position:absolute;inset:0;z-index:-1;opacity:.2;pointer-events:none;
+  background-image:radial-gradient(ellipse at 20% 25%,#fff 0 2px,transparent 3px),radial-gradient(ellipse at 70% 50%,#fff 0 3px,transparent 4px),radial-gradient(ellipse at 40% 80%,#fff 0 2px,transparent 3px);
+  background-size:145px 130px,210px 190px,175px 160px;
+  animation:shimmer 8s ease-in-out infinite alternate;
+}
+@keyframes shimmer{to{transform:translate3d(10px,-8px,0);opacity:.36}}
+.shell{
+  width:min(100%,560px);position:relative;padding:clamp(24px,6vw,42px) clamp(16px,5vw,30px) 28px;
+  border:1px solid #ffffffd9;border-radius:36px;
+  background:linear-gradient(155deg,#ffffffb8,#e7fffb91 52%,#c8f2ee9c);
+  box-shadow:0 25px 75px #397e8050,inset 0 1px 0 #fff;
+  backdrop-filter:blur(14px);text-align:center;overflow:hidden;
+}
+.eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#6c9ca0;font-weight:700}
+h1{
+  margin:12px 0 5px;font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(39px,10vw,62px);line-height:1.08;letter-spacing:.045em;
+  font-weight:600;color:#286874;text-shadow:0 2px 0 #ffffffb5;
+}
+.subtitle{margin:9px 0 0;color:#70999d;font-size:13px;letter-spacing:.035em}
+.sparkle{color:#e9a4a8}
+.aquarium{
+  position:relative;height:clamp(280px,72vw,370px);margin:27px auto 0;
+  border:2px solid #ffffffd9;border-bottom:5px solid #ffffffc9;
+  border-radius:25px 25px 19px 19px;overflow:hidden;
+  background:
+    linear-gradient(90deg,#ffffff48,transparent 18%,transparent 78%,#ffffff30),
+    linear-gradient(180deg,#a9e5e6c9 0%,#83d0d3d9 54%,#63b7c2e8 100%);
+  box-shadow:inset 0 0 30px #fff9,inset 0 -18px 35px #367f8b2b,0 12px 25px #478c9130;
+}
+.aquarium:before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:5;
+  background:linear-gradient(105deg,#fff9 0%,#fff3 9%,transparent 25% 72%,#fff4 88%,transparent 100%);
+}
+.waterline{
+  position:absolute;left:-10%;top:0;width:120%;height:13px;z-index:4;
+  border-bottom:2px solid #efffff9c;border-radius:50%;
+  background:linear-gradient(180deg,#ffffff60,transparent);
+}
+.light-ray{
+  position:absolute;top:-40px;width:70px;height:240px;z-index:0;
+  background:linear-gradient(180deg,#fff6,transparent);filter:blur(13px);
+  transform:rotate(22deg);animation:ray 7s ease-in-out infinite alternate;
+}
+.ray1{left:18%}.ray2{left:62%;height:200px;animation-delay:-3s;opacity:.6}
+@keyframes ray{to{transform:translateX(25px) rotate(28deg);opacity:.25}}
+.gravel{
+  position:absolute;bottom:-18px;left:-4%;width:108%;height:55px;z-index:2;
+  background:
+    radial-gradient(ellipse at 10% 35%,#cbb994 0 7px,transparent 8px),
+    radial-gradient(ellipse at 23% 65%,#f0e3c7 0 9px,transparent 10px),
+    radial-gradient(ellipse at 40% 40%,#c7b48e 0 8px,transparent 9px),
+    radial-gradient(ellipse at 63% 60%,#f2e4c7 0 10px,transparent 11px),
+    radial-gradient(ellipse at 82% 35%,#c9b58e 0 8px,transparent 9px),
+    linear-gradient(#e9d9b9,#cbb994);
+  border-radius:50% 50% 0 0;
+}
+.rock{position:absolute;bottom:24px;z-index:2;border-radius:55% 45% 30% 30%;background:linear-gradient(145deg,#a7b9a9,#718f88 70%);box-shadow:inset 5px 4px 8px #ffffff50,0 4px 7px #3c77774a}
+.rock.r1{width:58px;height:34px;left:34%;transform:rotate(-9deg)}
+.rock.r2{width:39px;height:25px;left:44%;bottom:26px;background:linear-gradient(145deg,#c1c5a9,#8c9e8d)}
+.rock.r3{width:48px;height:29px;right:24%;transform:rotate(8deg)}
+/* Aquatic plant silhouettes */
+.plant{position:absolute;bottom:31px;z-index:3;width:100px;height:205px;transform-origin:bottom center}
+.plant.left{left:3px}
+.plant.right{right:0;transform:scale(.86) rotate(3deg)}
+.plant.center{left:38%;transform:scale(.68);bottom:25px}
+.blade{
+  position:absolute;bottom:0;left:48%;width:13px;height:var(--h,150px);
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(90deg,#398f77,#8dcca0 55%,#4b9b7d);
+  transform-origin:bottom center;transform:rotate(var(--r,0deg));
+  box-shadow:inset 2px 0 3px #ffffff45;
+  animation:sway var(--speed,4s) ease-in-out infinite alternate;
+}
+.blade:after{content:"";position:absolute;left:48%;top:8%;height:80%;width:1px;background:#d8f4cf65;transform:rotate(-5deg)}
+@keyframes sway{to{transform:rotate(calc(var(--r,0deg) + 8deg))}}
+.anubias{
+  position:absolute;bottom:24px;left:18%;width:95px;height:66px;z-index:3;
+}
+.anubias i{
+  position:absolute;bottom:0;left:35px;width:27px;height:49px;
+  background:linear-gradient(130deg,#75b88a,#327d68);
+  border:1px solid #b5dfac55;border-radius:85% 10% 85% 10%;
+  transform-origin:bottom center;box-shadow:inset 3px 2px 4px #ffffff45;
+}
+.anubias i:nth-child(1){transform:rotate(-48deg)}
+.anubias i:nth-child(2){transform:rotate(-18deg);height:58px}
+.anubias i:nth-child(3){transform:rotate(25deg);height:52px}
+.anubias i:nth-child(4){transform:rotate(55deg);height:40px}
+.moss{
+  position:absolute;bottom:30px;right:12%;width:80px;height:29px;z-index:4;
+  border-radius:50%;background:radial-gradient(circle at 20% 30%,#9bce8e 0 5px,transparent 6px),radial-gradient(circle at 45% 45%,#5b9d76 0 8px,transparent 9px),radial-gradient(circle at 70% 25%,#a1d293 0 7px,transparent 8px),radial-gradient(circle at 80% 70%,#4f906d 0 8px,transparent 9px);
+}
+.fish{
+  position:absolute;left:-80px;top:39%;z-index:3;font-size:clamp(42px,11vw,62px);
+  line-height:1;filter:drop-shadow(0 6px 5px #286c7540);
+  animation:swim 14s linear infinite;
+}
+.fish.two{top:22%;font-size:34px;opacity:.82;animation:swim2 18s linear infinite 2s}
+@keyframes swim{
+  0%{left:-85px;transform:scaleX(-1) translateY(0)}
+  45%{transform:scaleX(-1) translateY(-13px)}
+  50%{left:calc(100% + 15px);transform:scaleX(1) translateY(-8px)}
+  100%{left:-85px;transform:scaleX(1) translateY(0)}
+}
+@keyframes swim2{
+  0%{left:calc(100% + 15px);transform:scaleX(1) translateY(0)}
+  45%{transform:scaleX(1) translateY(10px)}
+  50%{left:-55px;transform:scaleX(-1) translateY(6px)}
+  100%{left:calc(100% + 15px);transform:scaleX(-1) translateY(0)}
+}
+.bubble{
+  position:absolute;bottom:-22px;z-index:3;width:9px;height:9px;border:1.5px solid #f2ffffd9;
+  border-radius:50%;background:#ffffff35;animation:rise var(--duration,8s) linear infinite;
+}
+@keyframes rise{to{transform:translate3d(20px,-390px,0);opacity:0}}
+.b1{left:13%;--duration:8s}.b2{left:28%;width:6px;height:6px;--duration:10s;animation-delay:2s}
+.b3{left:53%;width:12px;height:12px;--duration:9s;animation-delay:1s}
+.b4{left:73%;--duration:11s;animation-delay:3s}.b5{left:88%;width:6px;height:6px;--duration:7s;animation-delay:1s}
+.caption{margin:21px 0 0;font-family:'Playfair Display',Georgia,serif;font-size:18px;color:#56838a}
+.heart{display:inline-block;color:#e99ba8;animation:heartbeat 1.6s ease-in-out infinite}
+@keyframes heartbeat{50%{transform:scale(1.22)}}
+.feed{
+  margin-top:17px;padding:11px 20px;border:1px solid #fff;border-radius:30px;
+  color:#477c84;background:#ffffff91;font:600 12px 'DM Sans',sans-serif;letter-spacing:.02em;
+  box-shadow:0 5px 15px #4b8d9120;cursor:pointer;transition:.2s;
+}
+.feed:hover{background:#fff;transform:translateY(-2px)}
+.feed:active{transform:scale(.97)}
+.footer{margin-top:19px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#78a1a4}
+.signature{margin-top:8px;font-family:'Playfair Display',serif;font-size:12px;color:#8aafb0}
+@media(max-width:390px){.shell{border-radius:27px}.aquarium{border-radius:20px}.footer{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="scene">
+  <div class="sunbeams"></div><div class="water-glow"></div>
+  <section class="shell">
+    <div class="eyebrow">✧ a little underwater world ✧</div>
+    <h1>RIYA'S FISH</h1>
+    <p class="subtitle">a tiny aquarium, made just for you</p>
+
+    <div class="aquarium" id="aquarium" aria-label="An animated little aquarium">
+      <div class="light-ray ray1"></div><div class="light-ray ray2"></div>
+      <div class="waterline"></div>
+
+      <div class="plant left">
+        <i class="blade" style="--h:135px;--r:-34deg;--speed:4.2s"></i>
+        <i class="blade" style="--h:175px;--r:-19deg;--speed:3.8s"></i>
+        <i class="blade" style="--h:205px;--r:0deg;--speed:4.5s"></i>
+        <i class="blade" style="--h:160px;--r:20deg;--speed:3.7s"></i>
+        <i class="blade" style="--h:120px;--r:38deg;--speed:4.1s"></i>
+      </div>
+      <div class="plant right">
+        <i class="blade" style="--h:145px;--r:-38deg"></i>
+        <i class="blade" style="--h:195px;--r:-18deg"></i>
+        <i class="blade" style="--h:175px;--r:4deg"></i>
+        <i class="blade" style="--h:135px;--r:28deg"></i>
+        <i class="blade" style="--h:110px;--r:43deg"></i>
+      </div>
+      <div class="plant center">
+        <i class="blade" style="--h:115px;--r:-30deg"></i>
+        <i class="blade" style="--h:155px;--r:-12deg"></i>
+        <i class="blade" style="--h:140px;--r:15deg"></i>
+        <i class="blade" style="--h:105px;--r:35deg"></i>
+      </div>
+      <div class="anubias"><i></i><i></i><i></i><i></i></div>
+      <div class="moss"></div>
+
+      <div class="rock r1"></div><div class="rock r2"></div><div class="rock r3"></div>
+      <div class="fish">🐠</div>
+      <div class="fish two">🐟</div>
+
+      <span class="bubble b1"></span><span class="bubble b2"></span>
+      <span class="bubble b3"></span><span class="bubble b4"></span>
+      <span class="bubble b5"></span>
+      <div class="gravel"></div>
+    </div>
+
+    <p class="caption">Just keep swimming, pretty girl <span class="heart">♥</span></p>
+    <button class="feed" id="feed">♡ &nbsp; DROP A LITTLE FISH FOOD</button>
+    <div class="footer">made with a little love & lots of bubbles</div>
+    <div class="signature">✧ for Riya, always ✧</div>
+  </section>
+</main>
+<script>
+const aquarium = document.getElementById('aquarium');
+document.getElementById('feed').addEventListener('click', () => {
+  for (let i = 0; i < 14; i++) {
+    const food = document.createElement('span');
+    food.textContent = '✦';
+    food.style.cssText = `
+      position:absolute;top:15px;left:${10 + Math.random()*80}%;
+      color:#fff9;font-size:${10 + Math.random()*9}px;
+      z-index:6;pointer-events:none;
+      animation:foodDrop ${1.8 + Math.random()*1.5}s ease-in forwards;
+    `;
+    aquarium.appendChild(food);
+    setTimeout(() => food.remove(), 3500);
+  }
+});
+const style = document.createElement('style');
+style.textContent = `
+@keyframes foodDrop {
+  0% { transform:translateY(0) rotate(0);opacity:0 }
+  15% { opacity:1 }
+  100% { transform:translateY(230px) rotate(130deg);opacity:0 }
+}`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
